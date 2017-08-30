@@ -5,6 +5,12 @@ Engine::Engine()
 
 }
 
+void Engine::initialize()
+{
+    std::cout << "[Engine] Initializing..." << std::endl;
+    Engine::GetProperties();
+}
+
 int Engine::start()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
