@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Properties.hpp"
+// #include "engine/utils/Properties.hpp"
 
 class Engine
 {
@@ -13,12 +13,12 @@ public:
 
     int start();
 
-    static Properties& GetProperties()
+    /* static Properties& GetProperties()
     {
         static Properties props("game.conf");
 
         return props;
-    }
+    } */
 
 private:
 

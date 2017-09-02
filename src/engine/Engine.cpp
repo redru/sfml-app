@@ -8,7 +8,7 @@ Engine::Engine()
 void Engine::initialize()
 {
     std::cout << "[Engine] Initializing..." << std::endl;
-    Engine::GetProperties();
+    // Engine::GetProperties();
 }
 
 int Engine::start()
