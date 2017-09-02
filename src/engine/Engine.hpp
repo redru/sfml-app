@@ -1,26 +1,39 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include <SFML/Graphics.hpp>
-// #include "engine/utils/Properties.hpp"
+#include "configuration/EngineConfiguration.hpp"
 
 class Engine
 {
 
 public:
-    Engine();
-
     void initialize();
 
     int start();
 
-    /* static Properties& GetProperties()
-    {
-        static Properties props("game.conf");
+    void setConfiguration(EngineConfiguration _configuration) { configuration = _configuration; }
 
-        return props;
-    } */
+    EngineConfiguration getConfiguration() { return configuration; }
 
 private:
+    EngineConfiguration configuration;
+    sf::Int32 elapsedTime;
+    // ================================================================================
 
+    // Singleton class configuration
+public:
+    static Engine& getInstance()
+    {
+        static Engine instance;
+
+        return instance;
+    }
+private:
+    Engine() {}
+
+public:
+    Engine(Engine const&)           = delete;
+    void operator=(Engine const&)   = delete;
 
 };

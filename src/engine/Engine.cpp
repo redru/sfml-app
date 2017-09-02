@@ -1,34 +1,44 @@
 #include "Engine.hpp"
 
-Engine::Engine()
-{
-
-}
-
 void Engine::initialize()
 {
     std::cout << "[Engine] Initializing..." << std::endl;
-    // Engine::GetProperties();
+    std::cout << "[Engine] Configuration:" << std::endl;
+    configuration.printConfiguration();
 }
 
 int Engine::start()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML-APP");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    sf::Clock clock;
+
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+        // Get elapsed time
+        elapsedTime = clock.getElapsedTime().asMilliseconds();
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        // Check if we must update game
+        if (elapsedTime >= configuration.getFrameTime())
+        {
+            // Restart clock
+            clock.restart();
+s
+            // Handle window events
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+    
+            // Redraw
+            window.clear();
+            window.draw(shape);
+            window.display();
+        }        
     }
 
     return 0;
